@@ -19,6 +19,9 @@ public class User {
    @Column(name = "email")
    private String email;
 
+   @Column(name = "car_series")
+   private Long carSeries;
+
    public User() {}
    
    public User(String firstName, String lastName, String email) {
@@ -26,6 +29,10 @@ public class User {
       this.lastName = lastName;
       this.email = email;
    }
+
+   public Long getCarSeries() { return carSeries; }
+
+   public void setCarSeries(Long carSeries) { this.carSeries = carSeries; }
 
    public Long getId() {
       return id;
