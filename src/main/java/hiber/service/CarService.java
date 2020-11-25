@@ -1,11 +1,10 @@
-package hiber.dao;
+package hiber.service;
 
 import hiber.model.Car;
 
 import java.util.List;
 
-public interface CarDao extends Dao<Car> {
-
+public interface CarService extends Service<Car>{
     @Override
     void add(Car car);
 

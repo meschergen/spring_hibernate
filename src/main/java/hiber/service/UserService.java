@@ -4,7 +4,14 @@ import hiber.model.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends Service<User>{
+
+    @Override
     void add(User user);
-    List<User> listUsers();
+
+    @Override
+    List<User> getAsList();
+
+    @Override
+    void clear();
 }

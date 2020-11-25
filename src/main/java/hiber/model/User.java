@@ -19,6 +19,9 @@ public class User {
    @Column(name = "email")
    private String email;
 
+   @OneToOne(mappedBy = "car_series")
+   private Long carSeries;
+
    public User() {}
    
    public User(String firstName, String lastName, String email) {
@@ -57,5 +60,14 @@ public class User {
 
    public void setEmail(String email) {
       this.email = email;
+   }
+
+   @Override
+   public String toString() {
+      return "\nId = "              + id
+              + "\nFirst Name = "   + firstName
+              + "\nLast Name = "    + lastName
+              + "\nEmail = "        + email
+              + "\n";
    }
 }
