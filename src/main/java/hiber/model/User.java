@@ -19,8 +19,10 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   @OneToOne(mappedBy = "car_series")
-   private Long carSeries;
+   @OneToOne
+   @JoinColumn(name = "car_series")
+   private Car car;
+   //private Long carSeries;
 
    public User() {}
    
@@ -28,6 +30,11 @@ public class User {
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
+   }
+
+   public User(String firstName, String lastName, String email, Car car) {
+      this(firstName, lastName, email);
+      this.car = car;
    }
 
    public Long getId() {
@@ -62,12 +69,21 @@ public class User {
       this.email = email;
    }
 
+   public Car getCar() {
+      return car;
+   }
+
+   public void setCarSeries(Car car) {
+      this.car = car;
+   }
+
    @Override
    public String toString() {
       return "\nId = "              + id
               + "\nFirst Name = "   + firstName
               + "\nLast Name = "    + lastName
               + "\nEmail = "        + email
+              + "\nCar series = "   + car.getSeries()
               + "\n";
    }
 }

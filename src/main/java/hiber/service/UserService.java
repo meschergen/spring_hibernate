@@ -14,4 +14,8 @@ public interface UserService extends Service<User>{
 
     @Override
     void clear();
+
+    List<User> getByCarModel(String model);
+
+    User getByCarSeries(Long series);
 }

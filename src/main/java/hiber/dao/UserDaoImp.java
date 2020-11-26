@@ -20,12 +20,30 @@ public class UserDaoImp implements UserDao {
    @Override
    @SuppressWarnings("unchecked")
    public List<User> getAsList() {
-      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM User");
+      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM User user JOIN FETCH user.car car");
       return query.getResultList();
    }
 
    @Override
    public void clear() {
-      sessionFactory.getCurrentSession().createQuery("DELETE FROM User");
+      sessionFactory.getCurrentSession().createQuery("DELETE FROM User").executeUpdate();
    }
+
+   @Override
+   @SuppressWarnings("unchecked")
+   public User getByCarSeries(Long series){
+      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM User user JOIN FETCH user.car car WHERE car.series = :carSeries");
+      query.setParameter("carSeries", series);
+      return query.getSingleResult();
+   }
+
+   @Override
+   @SuppressWarnings("unchecked")
+   public List<User> getByCarModel(String model){
+      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM User user JOIN FETCH user.car car WHERE car.model = :carModel");
+      query.setParameter("carModel", model);
+      return query.getResultList();
+   }
+
+
 }

@@ -8,12 +8,14 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToOne
-    @JoinColumn(name = "series", referencedColumnName = "car_series")
     private Long series;
 
     @Column(name = "model")
     private String model;
+
+
+    @OneToOne(mappedBy = "car")
+    private User user;
 
     public Car(){}
 
