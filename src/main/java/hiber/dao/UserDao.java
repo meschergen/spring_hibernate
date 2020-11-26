@@ -4,7 +4,14 @@ import hiber.model.User;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserDao extends Dao<User>{
+
+   @Override
    void add(User user);
-   List<User> listUsers();
+
+   @Override
+   List<User> getAsList();
+
+   @Override
+   void clear();
 }

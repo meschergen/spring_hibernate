@@ -22,8 +22,11 @@ public class UserServiceImp implements UserService {
 
    @Transactional(readOnly = true)
    @Override
-   public List<User> listUsers() {
-      return userDao.listUsers();
+   public List<User> getAsList() {
+      return userDao.getAsList();
    }
 
+   @Transactional
+   @Override
+   public void clear() { userDao.clear(); }
 }

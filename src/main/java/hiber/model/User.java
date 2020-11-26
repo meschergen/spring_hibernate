@@ -19,7 +19,7 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   @Column(name = "car_series")
+   @OneToOne(mappedBy = "car_series")
    private Long carSeries;
 
    public User() {}
@@ -29,10 +29,6 @@ public class User {
       this.lastName = lastName;
       this.email = email;
    }
-
-   public Long getCarSeries() { return carSeries; }
-
-   public void setCarSeries(Long carSeries) { this.carSeries = carSeries; }
 
    public Long getId() {
       return id;
@@ -64,5 +60,14 @@ public class User {
 
    public void setEmail(String email) {
       this.email = email;
+   }
+
+   @Override
+   public String toString() {
+      return "\nId = "              + id
+              + "\nFirst Name = "   + firstName
+              + "\nLast Name = "    + lastName
+              + "\nEmail = "        + email
+              + "\n";
    }
 }
