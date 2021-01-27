@@ -27,6 +27,7 @@ public class UserDaoImp implements UserDao {
    @Override
    public void clear() {
       sessionFactory.getCurrentSession().createQuery("DELETE FROM User").executeUpdate();
+      sessionFactory.getCurrentSession().createSQLQuery("ALTER TABLE users AUTO_INCREMENT = 1").executeUpdate();
    }
 
    @Override

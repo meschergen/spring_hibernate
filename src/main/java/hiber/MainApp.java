@@ -12,12 +12,11 @@ import java.util.List;
 
 public class MainApp {
    public static void main(String[] args) throws SQLException {
-      AnnotationConfigApplicationContext context = 
-            new AnnotationConfigApplicationContext(AppConfig.class);
+      AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
       UserService userService = context.getBean(UserService.class);
       CarService carService = context.getBean(CarService.class);
-/*
+
       userService.clear();
       carService.clear();
 
@@ -34,7 +33,7 @@ public class MainApp {
       userService.add(new User("User1", "Lastname1", "user1@mail.ru", car1));
       userService.add(new User("User2", "Lastname2", "user2@mail.ru", car2));
       userService.add(new User("User3", "Lastname3", "user3@mail.ru", car3));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru", car4));*/
+      userService.add(new User("User4", "Lastname4", "user4@mail.ru", car4));
 
       userService.getAsList().forEach(System.out::println);
       carService.getAsList().forEach(System.out::println);

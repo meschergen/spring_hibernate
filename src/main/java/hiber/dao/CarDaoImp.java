@@ -28,5 +28,6 @@ public class CarDaoImp implements CarDao {
     @Override
     public void clear() {
         sessionFactory.getCurrentSession().createQuery("DELETE FROM Car").executeUpdate();
+        sessionFactory.getCurrentSession().createSQLQuery("ALTER TABLE cars AUTO_INCREMENT = 1").executeUpdate();
     }
 }
